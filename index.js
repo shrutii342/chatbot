@@ -6,7 +6,7 @@ const chatBotCloseBtn = document.querySelector(".close-btn");
 
 let userMessage;
 const API_KEY = "sk-proj-rl03crmkMQIpUyz7ftSeT3BlbkFJwj2NYyJMilVj6vcJqU4j";
-const inputHeight = chatInput.computedStyleMap.scrollHeight;
+const inputHeight = chatInput.style.scrollHeight;
 
 const createChatLi = (message,className) =>{
     const chatLi = document.createElement("li");
@@ -17,8 +17,8 @@ const createChatLi = (message,className) =>{
     <span class="fa-solid fa-robot"></span>
     <p>$</p>
     `
-    chatLi.querySelector("p").textContent = message;
     chatLi.innerHTML = chatContent;
+    chatLi.querySelector("p").textContent = message;
     return chatLi;
 }
 
@@ -72,16 +72,16 @@ sendChatBtn.onclick = () =>{
 } 
 
 chatBotToggler.onclick = () =>{
-    document.body.classList.toggle("show-chatbot");
+    document.body.classList.toggle('show-chatbot');
 }
 chatBotCloseBtn.onclick = () =>{
-    document.body.classList.remove("show-chatbot");
+    document.body.classList.remove('show-chatbot');
 }
 chatInput.oninput = () =>{
     chatInput.style.height = `${inputHeight}px`;
     chatInput.style.height = `${chatInput.scrollHeight}px`;
 }
-chatInput.onkeydown = () =>{
+chatInput.onkeydown = (e) =>{
     if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800);
         {
             e.preventDefault();
